@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoginModelStoreContainer" CdmEntityContainer="LoginEntities">
+    <FunctionImportMapping FunctionImportName="CheckLogin" FunctionName="LoginModel.Store.CheckLogin" />
+    <FunctionImportMapping FunctionImportName="GetPassword" FunctionName="LoginModel.Store.GetPassword" />
+    <FunctionImportMapping FunctionImportName="ProcedureCheckLogin" FunctionName="LoginModel.Store.ProcedureCheckLogin" />
+    <FunctionImportMapping FunctionImportName="CheckToken" FunctionName="LoginModel.Store.CheckToken">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LoginModel.CheckToken_Result">
+          <ScalarProperty Name="id_User" ColumnName="id_User" />
+          <ScalarProperty Name="name_User" ColumnName="name_User" />
+          <ScalarProperty Name="password_User" ColumnName="password_User" />
+          <ScalarProperty Name="email_User" ColumnName="email_User" />
+          <ScalarProperty Name="tokenpass_User" ColumnName="tokenpass_User" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateUser" FunctionName="LoginModel.Store.UpdateUser" />
+    <FunctionImportMapping FunctionImportName="IngreUser" FunctionName="LoginModel.Store.IngreUser" />
+    <EntitySetMapping Name="Module">
+      <EntityTypeMapping TypeName="LoginModel.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="moduleName" ColumnName="moduleName" />
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operation">
+      <EntityTypeMapping TypeName="LoginModel.Operation">
+        <MappingFragment StoreEntitySet="Operation">
+          <ScalarProperty Name="operationModuleId" ColumnName="operationModuleId" />
+          <ScalarProperty Name="opertaionName" ColumnName="opertaionName" />
+          <ScalarProperty Name="opertaionId" ColumnName="opertaionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="LoginModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="rolName" ColumnName="rolName" />
+          <ScalarProperty Name="rolId" ColumnName="rolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol_Operation">
+      <EntityTypeMapping TypeName="LoginModel.Rol_Operation">
+        <MappingFragment StoreEntitySet="Rol_Operation">
+          <ScalarProperty Name="idOperation" ColumnName="idOperation" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="LoginModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserIdRol" ColumnName="UserIdRol" />
+          <ScalarProperty Name="tokenpass_User" ColumnName="tokenpass_User" />
+          <ScalarProperty Name="email_User" ColumnName="email_User" />
+          <ScalarProperty Name="password_User" ColumnName="password_User" />
+          <ScalarProperty Name="name_User" ColumnName="name_User" />
+          <ScalarProperty Name="id_User" ColumnName="id_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

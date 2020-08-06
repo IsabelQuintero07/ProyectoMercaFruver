@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MercaFruverSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="categoryDescription" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="categoryStateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="clientId" />
+    </Key>
+    <Property Name="clientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clientDocumentTypeId" Type="int" Nullable="false" />
+    <Property Name="clientDocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="clientName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="clientAddress" Type="varchar" MaxLength="100" />
+    <Property Name="clientEmail" Type="varchar" MaxLength="100" />
+    <Property Name="clientPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="clientStateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Concept_Sale">
+    <Key>
+      <PropertyRef Name="conceptId" />
+    </Key>
+    <Property Name="conceptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="conceptProductId" Type="int" Nullable="false" />
+    <Property Name="conceptSaleId" Type="int" Nullable="false" />
+    <Property Name="conceptQuantity" Type="int" Nullable="false" />
+    <Property Name="conceptUnitPrice" Type="decimal" Precision="16" Scale="2" />
+    <Property Name="conceptStateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cstate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Document_Type">
+    <Key>
+      <PropertyRef Name="documentTypeId" />
+    </Key>
+    <Property Name="documentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productCategoryId" Type="int" Nullable="false" />
+    <Property Name="productCode" Type="int" />
+    <Property Name="productName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="productSellingPrice" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="productStock" Type="int" />
+    <Property Name="productCost" Type="decimal" Precision="16" Scale="2" />
+    <Property Name="productStateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchaseId" />
+    </Key>
+    <Property Name="purchaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchaseSupplierId" Type="int" Nullable="false" />
+    <Property Name="purchaseProductId" Type="int" Nullable="false" />
+    <Property Name="purchaseQuantity" Type="int" Nullable="false" />
+    <Property Name="purchaseUnitCost" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="purchaseDate" Type="date" Nullable="false" />
+    <Property Name="purchaseStateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sale">
+    <Key>
+      <PropertyRef Name="saleId" />
+    </Key>
+    <Property Name="saleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="saleClientId" Type="int" Nullable="false" />
+    <Property Name="saleVendorId" Type="int" Nullable="false" />
+    <Property Name="saleDate" Type="date" />
+    <Property Name="saleDiscount" Type="decimal" Precision="16" Scale="2" />
+    <Property Name="saleTotal" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="saleStateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="supplierId" />
+    </Key>
+    <Property Name="supplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="supplierNit" Type="int" Nullable="false" />
+    <Property Name="supplierName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="supplierAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="supplierPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="supplierCity" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="supplierWebpage" Type="varchar" MaxLength="100" />
+    <Property Name="supplierStateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="vendorId" />
+    </Key>
+    <Property Name="vendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="vendorDocumentTypeId" Type="int" Nullable="false" />
+    <Property Name="vendorDocumentTypeNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="vendorName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vendorAddress" Type="varchar" MaxLength="100" />
+    <Property Name="vendorEmail" Type="varchar" MaxLength="100" />
+    <Property Name="vendorPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="vendorStateId" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Client' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Client">
+    <Key>
+      <PropertyRef Name="clientId" />
+      <PropertyRef Name="DocumentNumber" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="clientId" Type="int" Nullable="false" />
+    <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+    <Property Name="DocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Concept' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Concept">
+    <Key>
+      <PropertyRef Name="conceptId" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Sale" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="conceptId" Type="int" Nullable="false" />
+    <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sale" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="16" Scale="2" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Product' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Product">
+    <Key>
+      <PropertyRef Name="productId" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Category" />
+      <PropertyRef Name="Price" />
+    </Key>
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="Stock" Type="int" />
+    <Property Name="Cost" Type="decimal" Precision="16" Scale="2" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Purchase' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Purchase">
+    <Key>
+      <PropertyRef Name="purchaseId" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="UnitCost" />
+      <PropertyRef Name="PurchaseDate" />
+    </Key>
+    <Property Name="purchaseId" Type="int" Nullable="false" />
+    <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitCost" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="PurchaseDate" Type="date" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Sale' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Sale">
+    <Key>
+      <PropertyRef Name="saleId" />
+      <PropertyRef Name="Client" />
+      <PropertyRef Name="Vendor" />
+      <PropertyRef Name="Total" />
+    </Key>
+    <Property Name="saleId" Type="int" Nullable="false" />
+    <Property Name="Client" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Vendor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SaleDate" Type="date" />
+    <Property Name="Discount" Type="decimal" Precision="16" Scale="2" />
+    <Property Name="Total" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Supplier' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Supplier">
+    <Key>
+      <PropertyRef Name="supplierId" />
+      <PropertyRef Name="Nit" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="PhoneNumber" />
+      <PropertyRef Name="City" />
+    </Key>
+    <Property Name="supplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nit" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Webpage" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Vendor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="vw_Vendor">
+    <Key>
+      <PropertyRef Name="vendorId" />
+      <PropertyRef Name="DocumentNumber" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Phone" />
+    </Key>
+    <Property Name="vendorId" Type="int" Nullable="false" />
+    <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+    <Property Name="DocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Category_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="categoryStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="clientStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Document_Type">
+    <End Role="Document_Type" Type="Self.Document_Type" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document_Type">
+        <PropertyRef Name="documentTypeId" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="clientDocumentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Concept_Sale_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+    <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Concept_Sale">
+        <PropertyRef Name="conceptStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Concept_Sale_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Concept_Sale">
+        <PropertyRef Name="conceptProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Concept_Sale_Sale">
+    <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
+    <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale">
+        <PropertyRef Name="saleId" />
+      </Principal>
+      <Dependent Role="Concept_Sale">
+        <PropertyRef Name="conceptSaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="productCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="productStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="purchaseStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="purchaseProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="supplierId" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="purchaseSupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="saleClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="saleStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Vendor">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+    <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="vendorId" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="saleVendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="supplierStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_cstate">
+    <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cstate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="vendorStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Document_Type">
+    <End Role="Document_Type" Type="Self.Document_Type" Multiplicity="1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Document_Type">
+        <PropertyRef Name="documentTypeId" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="vendorDocumentTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_category_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_category_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_category_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cName" Type="varchar" Mode="In" />
+    <Parameter Name="cDescription" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_category_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_category_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cId" Type="int" Mode="In" />
+    <Parameter Name="cName" Type="varchar" Mode="In" />
+    <Parameter Name="cDescription" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_client_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_client_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_client_getByDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_client_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clDocumentTypeId" Type="int" Mode="In" />
+    <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="clName" Type="varchar" Mode="In" />
+    <Parameter Name="clAddress" Type="varchar" Mode="In" />
+    <Parameter Name="clEmail" Type="varchar" Mode="In" />
+    <Parameter Name="clPhoneNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_client_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_client_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="clName" Type="varchar" Mode="In" />
+    <Parameter Name="clAddress" Type="varchar" Mode="In" />
+    <Parameter Name="clEmail" Type="varchar" Mode="In" />
+    <Parameter Name="clPhoneNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_concept_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="coId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_concept_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="coId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_concept_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="coId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_concept_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="coProductId" Type="int" Mode="In" />
+    <Parameter Name="coSaleId" Type="int" Mode="In" />
+    <Parameter Name="coQuantity" Type="int" Mode="In" />
+    <Parameter Name="coUnitPrice" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_concept_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_concept_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="coId" Type="int" Mode="In" />
+    <Parameter Name="coProductId" Type="int" Mode="In" />
+    <Parameter Name="coSaleId" Type="int" Mode="In" />
+    <Parameter Name="coQuantity" Type="int" Mode="In" />
+    <Parameter Name="coUnitPrice" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_product_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_product_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_product_getByCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_product_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_product_getList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_product_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pCategoryId" Type="int" Mode="In" />
+    <Parameter Name="pCode" Type="int" Mode="In" />
+    <Parameter Name="pName" Type="varchar" Mode="In" />
+    <Parameter Name="pSellingPrice" Type="decimal" Mode="In" />
+    <Parameter Name="pStock" Type="int" Mode="In" />
+    <Parameter Name="pCost" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_product_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pCategoryId" Type="int" Mode="In" />
+    <Parameter Name="pCode" Type="int" Mode="In" />
+    <Parameter Name="pName" Type="varchar" Mode="In" />
+    <Parameter Name="pSellingPrice" Type="decimal" Mode="In" />
+    <Parameter Name="pStock" Type="int" Mode="In" />
+    <Parameter Name="pCost" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_purchase_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="puId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_purchase_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="puId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_purchase_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="puId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_purchase_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="puSupplierId" Type="int" Mode="In" />
+    <Parameter Name="puProductId" Type="int" Mode="In" />
+    <Parameter Name="puQuantity" Type="int" Mode="In" />
+    <Parameter Name="puUnitCost" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_purchase_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_purchase_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="puId" Type="int" Mode="In" />
+    <Parameter Name="puSupplierId" Type="int" Mode="In" />
+    <Parameter Name="puProductId" Type="int" Mode="In" />
+    <Parameter Name="puQuantity" Type="int" Mode="In" />
+    <Parameter Name="puUnitCost" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_sale_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="saId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_sale_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="saId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_sale_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="saId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_sale_getlast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_sale_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="saClientId" Type="int" Mode="In" />
+    <Parameter Name="saVendorId" Type="int" Mode="In" />
+    <Parameter Name="saDisconunt" Type="decimal" Mode="In" />
+    <Parameter Name="saTotal" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_sale_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_sale_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="saId" Type="int" Mode="In" />
+    <Parameter Name="saClientId" Type="int" Mode="In" />
+    <Parameter Name="saVendorId" Type="int" Mode="In" />
+    <Parameter Name="saDisconunt" Type="decimal" Mode="In" />
+    <Parameter Name="saTotal" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="sp_supplier_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNit" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_supplier_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNit" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_supplier_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNit" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_supplier_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNit" Type="int" Mode="In" />
+    <Parameter Name="sName" Type="varchar" Mode="In" />
+    <Parameter Name="sAddress" Type="varchar" Mode="In" />
+    <Parameter Name="sPhone" Type="varchar" Mode="In" />
+    <Parameter Name="sCity" Type="varchar" Mode="In" />
+    <Parameter Name="sWeb" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_supplier_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_supplier_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sNit" Type="int" Mode="In" />
+    <Parameter Name="sName" Type="varchar" Mode="In" />
+    <Parameter Name="sAddress" Type="varchar" Mode="In" />
+    <Parameter Name="sPhone" Type="varchar" Mode="In" />
+    <Parameter Name="sCity" Type="varchar" Mode="In" />
+    <Parameter Name="sWeb" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_vendor_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_vendor_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_vendor_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_vendor_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vDocumentId" Type="int" Mode="In" />
+    <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="vName" Type="varchar" Mode="In" />
+    <Parameter Name="vAddress" Type="varchar" Mode="In" />
+    <Parameter Name="vEmail" Type="varchar" Mode="In" />
+    <Parameter Name="vPhone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_vendor_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_vendor_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="vName" Type="varchar" Mode="In" />
+    <Parameter Name="vAddress" Type="varchar" Mode="In" />
+    <Parameter Name="vEmail" Type="varchar" Mode="In" />
+    <Parameter Name="vPhone" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="MercaFruverSVModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Concept_Sale" EntityType="Self.Concept_Sale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cstate" EntityType="Self.cstate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Document_Type" EntityType="Self.Document_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Client" EntityType="Self.vw_Client" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Client].[clientId] AS [clientId], 
+    [vw_Client].[DocumentType] AS [DocumentType], 
+    [vw_Client].[DocumentNumber] AS [DocumentNumber], 
+    [vw_Client].[Name] AS [Name], 
+    [vw_Client].[Address] AS [Address], 
+    [vw_Client].[Email] AS [Email], 
+    [vw_Client].[Phone] AS [Phone]
+    FROM [dbo].[vw_Client] AS [vw_Client]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Concept" EntityType="Self.vw_Concept" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Concept].[conceptId] AS [conceptId], 
+    [vw_Concept].[Product] AS [Product], 
+    [vw_Concept].[Sale] AS [Sale], 
+    [vw_Concept].[Quantity] AS [Quantity], 
+    [vw_Concept].[UnitPrice] AS [UnitPrice]
+    FROM [dbo].[vw_Concept] AS [vw_Concept]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Product" EntityType="Self.vw_Product" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Product].[productId] AS [productId], 
+    [vw_Product].[Code] AS [Code], 
+    [vw_Product].[Name] AS [Name], 
+    [vw_Product].[Category] AS [Category], 
+    [vw_Product].[Price] AS [Price], 
+    [vw_Product].[Stock] AS [Stock], 
+    [vw_Product].[Cost] AS [Cost]
+    FROM [dbo].[vw_Product] AS [vw_Product]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Purchase" EntityType="Self.vw_Purchase" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Purchase].[purchaseId] AS [purchaseId], 
+    [vw_Purchase].[Supplier] AS [Supplier], 
+    [vw_Purchase].[Product] AS [Product], 
+    [vw_Purchase].[Quantity] AS [Quantity], 
+    [vw_Purchase].[UnitCost] AS [UnitCost], 
+    [vw_Purchase].[PurchaseDate] AS [PurchaseDate]
+    FROM [dbo].[vw_Purchase] AS [vw_Purchase]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Sale" EntityType="Self.vw_Sale" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Sale].[saleId] AS [saleId], 
+    [vw_Sale].[Client] AS [Client], 
+    [vw_Sale].[Vendor] AS [Vendor], 
+    [vw_Sale].[SaleDate] AS [SaleDate], 
+    [vw_Sale].[Discount] AS [Discount], 
+    [vw_Sale].[Total] AS [Total]
+    FROM [dbo].[vw_Sale] AS [vw_Sale]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Supplier" EntityType="Self.vw_Supplier" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Supplier].[supplierId] AS [supplierId], 
+    [vw_Supplier].[Nit] AS [Nit], 
+    [vw_Supplier].[Name] AS [Name], 
+    [vw_Supplier].[Address] AS [Address], 
+    [vw_Supplier].[PhoneNumber] AS [PhoneNumber], 
+    [vw_Supplier].[City] AS [City], 
+    [vw_Supplier].[Webpage] AS [Webpage]
+    FROM [dbo].[vw_Supplier] AS [vw_Supplier]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Vendor" EntityType="Self.vw_Vendor" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Vendor].[vendorId] AS [vendorId], 
+    [vw_Vendor].[DocumentType] AS [DocumentType], 
+    [vw_Vendor].[DocumentNumber] AS [DocumentNumber], 
+    [vw_Vendor].[Name] AS [Name], 
+    [vw_Vendor].[Address] AS [Address], 
+    [vw_Vendor].[Email] AS [Email], 
+    [vw_Vendor].[Phone] AS [Phone]
+    FROM [dbo].[vw_Vendor] AS [vw_Vendor]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Category_cstate" Association="Self.FK_Category_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_cstate" Association="Self.FK_Client_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Document_Type" Association="Self.FK_Client_Document_Type">
+      <End Role="Document_Type" EntitySet="Document_Type" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Concept_Sale_cstate" Association="Self.FK_Concept_Sale_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Concept_Sale_Product" Association="Self.FK_Concept_Sale_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Concept_Sale_Sale" Association="Self.FK_Concept_Sale_Sale">
+      <End Role="Sale" EntitySet="Sale" />
+      <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_cstate" Association="Self.FK_Product_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_cstate" Association="Self.FK_Purchase_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Client" Association="Self.FK_Sale_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_cstate" Association="Self.FK_Sale_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Vendor" Association="Self.FK_Sale_Vendor">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Sale" EntitySet="Sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_cstate" Association="Self.FK_Supplier_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_cstate" Association="Self.FK_Vendor_cstate">
+      <End Role="cstate" EntitySet="cstate" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Document_Type" Association="Self.FK_Vendor_Document_Type">
+      <End Role="Document_Type" EntitySet="Document_Type" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

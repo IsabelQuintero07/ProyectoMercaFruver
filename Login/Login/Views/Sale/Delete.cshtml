@@ -1,0 +1,65 @@
+﻿@model Login.ServiceReference.Sale
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Are you sure you want to delete this Sale?</h3>
+<div>
+    <h4>Delete Sale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Client
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleClientId)
+        </dd>
+
+        <dt>
+            Vendor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleVendorId)
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleDate)
+        </dd>
+
+        <dt>
+            Discount
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleDiscount)
+        </dd>
+
+        <dt>
+            Total
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saleTotal)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

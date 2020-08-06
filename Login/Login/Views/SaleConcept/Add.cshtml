@@ -1,0 +1,157 @@
+﻿@model Login.Models.ViewModels.SaleViewModel
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<div style="color:forestgreen"></div>
+@ViewBag.Message
+
+@using (Html.BeginForm("Add", "SaleConcept", FormMethod.Post))
+{
+
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(model => model.saleClientId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.saleClientId, ViewBag.ClientId as SelectList, htmlAttributes: new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.saleClientId, "", new { @class = "text-danger" })*@
+            </div>
+
+            @Html.LabelFor(model => model.saleVendorId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.saleVendorId, ViewBag.VendorId as SelectList, htmlAttributes: new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.saleVendorId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="form-group">
+                @Html.Label("Quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="Quantity" />
+                </div>
+
+                @Html.Label("Product", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.DropDownList("ProductId", null, htmlAttributes: new { @class = "form-control", id = "Product" })
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="form-group">
+                    @Html.Label("UnitPrice", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="UnitPrice" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                @*<div class="form-group">
+                    @Html.Label("Discount", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="Discount" />
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="button" value="Add" class="btn-primary" onclick="AddOneConcept(); return false;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="divConcepts">
+            <table class="table" id="ConceptsTable">
+                <tr>
+                    <th>
+                        Quantity
+                    </th>
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Unit Price
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="name" value="Send" />
+        </div>
+    </div>
+}
+
+<script>
+    var num = 0;
+
+    function AddOneConcept() {
+        let Quantity = document.getElementById("Quantity").value;
+        let Product = document.getElementById("Product").value;
+        let UnitPrice = document.getElementById("UnitPrice").value;
+
+        let Table = document.getElementById("ConceptsTable");
+        let TR = document.createElement("tr");
+
+        let TDQuantity = document.createElement("td");
+        let TDProduct = document.createElement("td");
+        let TDUnitPrice = document.createElement("td");
+        let TDTotal = document.createElement("td");
+
+        TR.appendChild(TDQuantity);
+        TR.appendChild(TDProduct);
+        TR.appendChild(TDUnitPrice);
+        TR.appendChild(TDTotal);
+
+        TDQuantity.innerHTML = Quantity;
+        TDProduct.innerHTML = Product;
+        TDUnitPrice.innerHTML = UnitPrice;
+        TDTotal.innerHTML = parseFloat(Quantity) * parseFloat(UnitPrice);
+
+        Table.appendChild(TR);
+
+        //HIDDENS
+        let DivConcepts = document.getElementById("divConcepts");
+        let HiddenIndex = document.createElement("input");
+        let HiddenQuantity = document.createElement("input");
+        let HiddenProduct = document.createElement("input");
+        let HiddenUnitPrice = document.createElement("input");
+
+        HiddenIndex.name = "Concepts.Index";
+        HiddenIndex.value = num;
+        HiddenIndex.type = "hidden";
+
+        HiddenQuantity.name = "Concepts[" + num + "].conceptQuantity";
+        HiddenQuantity.value = Quantity;
+        HiddenQuantity.type = "hidden";
+
+        HiddenProduct.name = "Concepts[" + num + "].conceptProductId";
+        HiddenProduct.value = Product;
+        HiddenProduct.type = "hidden";
+
+        HiddenUnitPrice.name = "Concepts[" + num + "].conceptUnitPrice";
+        HiddenUnitPrice.value = UnitPrice;
+        HiddenUnitPrice.type = "hidden";
+
+        DivConcepts.appendChild(HiddenIndex);
+        DivConcepts.appendChild(HiddenQuantity);
+        DivConcepts.appendChild(HiddenProduct);
+        DivConcepts.appendChild(HiddenUnitPrice);
+
+        document.getElementById("Quantity").value = "";
+        document.getElementById("Product").value = "";
+        document.getElementById("UnitPrice").value = "";
+
+        num++;
+    }
+</script>

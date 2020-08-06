@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Login.ServiceReference.vw_Concept>
+
+@{
+    ViewBag.Title = "Concepts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Concepts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add", "SaleConcept")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.conceptId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sale)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitPrice)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.conceptId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.conceptId })
+    </td>
+</tr>
+}
+
+</table>

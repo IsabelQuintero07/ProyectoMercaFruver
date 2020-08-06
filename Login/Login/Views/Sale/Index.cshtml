@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Login.ServiceReference.vw_Sale>
+
+@{
+    ViewBag.Title = "Sales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sales</h2>
+
+<p>
+    @Html.ActionLink("Create New","Add", "SaleConcept")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendor)
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.saleId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Client)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vendor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SaleDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Discount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Total)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id=item.saleId }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.saleId })
+    </td>
+</tr>
+}
+
+</table>

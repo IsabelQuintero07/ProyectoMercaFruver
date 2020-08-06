@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LoginEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="CheckLogin" ReturnType="Collection(Int32)">
+      <Parameter Name="name_User" Mode="In" Type="String" />
+      <Parameter Name="password_User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetPassword" ReturnType="Collection(String)">
+      <Parameter Name="email_User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ProcedureCheckLogin" EntitySet="Users" ReturnType="Collection(LoginModel.Users)">
+      <Parameter Name="name_User" Mode="In" Type="String" />
+      <Parameter Name="password_User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CheckToken" ReturnType="Collection(LoginModel.CheckToken_Result)">
+      <Parameter Name="token_User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateUser">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="IgresarUsuario">
+      <Parameter Name="name_User" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="IngreUser">
+      <Parameter Name="name_User" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Module" EntityType="LoginModel.Module" />
+    <EntitySet Name="Operation" EntityType="LoginModel.Operation" />
+    <EntitySet Name="Rol" EntityType="LoginModel.Rol" />
+    <EntitySet Name="Rol_Operation" EntityType="LoginModel.Rol_Operation" />
+    <EntitySet Name="Users" EntityType="LoginModel.Users" />
+    <AssociationSet Name="FK_Operation_Module" Association="LoginModel.FK_Operation_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Operation_Operation" Association="LoginModel.FK_Rol_Operation_Operation">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="Rol_Operation" EntitySet="Rol_Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Operation_Rol" Association="LoginModel.FK_Rol_Operation_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Rol_Operation" EntitySet="Rol_Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Rol" Association="LoginModel.FK_Users_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="ProcedureCheckLogin_Result">
+    <Property Type="Int64" Name="id_User" Nullable="false" />
+    <Property Type="String" Name="name_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="password_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="email_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="tokenpass_User" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="CheckToken_Result">
+    <Property Type="Int64" Name="id_User" Nullable="false" />
+    <Property Type="String" Name="name_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="password_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="email_User" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="tokenpass_User" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="moduleId" />
+    </Key>
+    <Property Name="moduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="moduleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Operation" Relationship="LoginModel.FK_Operation_Module" FromRole="Module" ToRole="Operation" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="opertaionId" />
+    </Key>
+    <Property Name="opertaionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="opertaionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="operationModuleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Module" Relationship="LoginModel.FK_Operation_Module" FromRole="Operation" ToRole="Module" />
+    <NavigationProperty Name="Rol_Operation" Relationship="LoginModel.FK_Rol_Operation_Operation" FromRole="Operation" ToRole="Rol_Operation" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="rolId" />
+    </Key>
+    <Property Name="rolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Rol_Operation" Relationship="LoginModel.FK_Rol_Operation_Rol" FromRole="Rol" ToRole="Rol_Operation" />
+    <NavigationProperty Name="Users" Relationship="LoginModel.FK_Users_Rol" FromRole="Rol" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Rol_Operation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="idOperation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="LoginModel.FK_Rol_Operation_Operation" FromRole="Rol_Operation" ToRole="Operation" />
+    <NavigationProperty Name="Rol" Relationship="LoginModel.FK_Rol_Operation_Rol" FromRole="Rol_Operation" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_User" />
+    </Key>
+    <Property Name="id_User" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name_User" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="password_User" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="email_User" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="tokenpass_User" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserIdRol" Type="Int32" />
+    <NavigationProperty Name="Rol" Relationship="LoginModel.FK_Users_Rol" FromRole="Users" ToRole="Rol" />
+  </EntityType>
+  <Association Name="FK_Operation_Module">
+    <End Type="LoginModel.Module" Role="Module" Multiplicity="1" />
+    <End Type="LoginModel.Operation" Role="Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="moduleId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="operationModuleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Operation_Operation">
+    <End Type="LoginModel.Operation" Role="Operation" Multiplicity="1" />
+    <End Type="LoginModel.Rol_Operation" Role="Rol_Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="opertaionId" />
+      </Principal>
+      <Dependent Role="Rol_Operation">
+        <PropertyRef Name="idOperation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Operation_Rol">
+    <End Type="LoginModel.Rol" Role="Rol" Multiplicity="1" />
+    <End Type="LoginModel.Rol_Operation" Role="Rol_Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="rolId" />
+      </Principal>
+      <Dependent Role="Rol_Operation">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Rol">
+    <End Type="LoginModel.Rol" Role="Rol" Multiplicity="0..1" />
+    <End Type="LoginModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="rolId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserIdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

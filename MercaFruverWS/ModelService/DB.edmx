@@ -1,0 +1,1994 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MercaFruverSVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="categoryDescription" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="categoryStateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+          </Key>
+          <Property Name="clientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="clientDocumentTypeId" Type="int" Nullable="false" />
+          <Property Name="clientDocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="clientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="clientAddress" Type="varchar" MaxLength="100" />
+          <Property Name="clientEmail" Type="varchar" MaxLength="100" />
+          <Property Name="clientPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="clientStateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Concept_Sale">
+          <Key>
+            <PropertyRef Name="conceptId" />
+          </Key>
+          <Property Name="conceptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="conceptProductId" Type="int" Nullable="false" />
+          <Property Name="conceptSaleId" Type="int" Nullable="false" />
+          <Property Name="conceptQuantity" Type="int" Nullable="false" />
+          <Property Name="conceptUnitPrice" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="conceptStateId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cstate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document_Type">
+          <Key>
+            <PropertyRef Name="documentTypeId" />
+          </Key>
+          <Property Name="documentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="documentTypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productCategoryId" Type="int" Nullable="false" />
+          <Property Name="productCode" Type="int" />
+          <Property Name="productName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="productSellingPrice" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="productStock" Type="int" />
+          <Property Name="productCost" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="productStateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="purchaseId" />
+          </Key>
+          <Property Name="purchaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchaseSupplierId" Type="int" Nullable="false" />
+          <Property Name="purchaseProductId" Type="int" Nullable="false" />
+          <Property Name="purchaseQuantity" Type="int" Nullable="false" />
+          <Property Name="purchaseUnitCost" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="purchaseDate" Type="date" Nullable="false" />
+          <Property Name="purchaseStateId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+          </Key>
+          <Property Name="saleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="saleClientId" Type="int" Nullable="false" />
+          <Property Name="saleVendorId" Type="int" Nullable="false" />
+          <Property Name="saleDate" Type="date" />
+          <Property Name="saleDiscount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="saleTotal" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="saleStateId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supplierId" />
+          </Key>
+          <Property Name="supplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supplierNit" Type="int" Nullable="false" />
+          <Property Name="supplierName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="supplierAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="supplierPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="supplierCity" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="supplierWebpage" Type="varchar" MaxLength="100" />
+          <Property Name="supplierStateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="vendorId" />
+          </Key>
+          <Property Name="vendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vendorDocumentTypeId" Type="int" Nullable="false" />
+          <Property Name="vendorDocumentTypeNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="vendorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vendorAddress" Type="varchar" MaxLength="100" />
+          <Property Name="vendorEmail" Type="varchar" MaxLength="100" />
+          <Property Name="vendorPhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="vendorStateId" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Client' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+            <PropertyRef Name="DocumentNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="clientId" Type="int" Nullable="false" />
+          <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Concept' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Concept">
+          <Key>
+            <PropertyRef Name="conceptId" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Sale" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="conceptId" Type="int" Nullable="false" />
+          <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sale" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Product' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Product">
+          <Key>
+            <PropertyRef Name="productId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Purchase' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Purchase">
+          <Key>
+            <PropertyRef Name="purchaseId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="UnitCost" />
+            <PropertyRef Name="PurchaseDate" />
+          </Key>
+          <Property Name="purchaseId" Type="int" Nullable="false" />
+          <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UnitCost" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="PurchaseDate" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Sale' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="Vendor" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="saleId" Type="int" Nullable="false" />
+          <Property Name="Client" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vendor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SaleDate" Type="date" />
+          <Property Name="Discount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Supplier' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Supplier">
+          <Key>
+            <PropertyRef Name="supplierId" />
+            <PropertyRef Name="Nit" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="supplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Webpage" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MercaFruverSV.dbo.vw_Vendor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_Vendor">
+          <Key>
+            <PropertyRef Name="vendorId" />
+            <PropertyRef Name="DocumentNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="vendorId" Type="int" Nullable="false" />
+          <Property Name="DocumentType" Type="varchar" MaxLength="50" />
+          <Property Name="DocumentNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="categoryStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="clientStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Document_Type">
+          <End Role="Document_Type" Type="Self.Document_Type" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Type">
+              <PropertyRef Name="documentTypeId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="clientDocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concept_Sale_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+          <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concept_Sale_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concept_Sale_Sale">
+          <End Role="Sale" Type="Self.Sale" Multiplicity="1" />
+          <End Role="Concept_Sale" Type="Self.Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="saleId" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptSaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="productCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="productStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="clientId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="1" />
+          <End Role="Sale" Type="Self.Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="vendorId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleVendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="supplierStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_cstate">
+          <End Role="cstate" Type="Self.cstate" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="vendorStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Document_Type">
+          <End Role="Document_Type" Type="Self.Document_Type" Multiplicity="1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Type">
+              <PropertyRef Name="documentTypeId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="vendorDocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_category_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_category_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_category_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cName" Type="varchar" Mode="In" />
+          <Parameter Name="cDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_category_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_category_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cId" Type="int" Mode="In" />
+          <Parameter Name="cName" Type="varchar" Mode="In" />
+          <Parameter Name="cDescription" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_client_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_client_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_client_getByDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_client_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clDocumentTypeId" Type="int" Mode="In" />
+          <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+          <Parameter Name="clName" Type="varchar" Mode="In" />
+          <Parameter Name="clAddress" Type="varchar" Mode="In" />
+          <Parameter Name="clEmail" Type="varchar" Mode="In" />
+          <Parameter Name="clPhoneNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_client_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_client_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clDocumentNumber" Type="varchar" Mode="In" />
+          <Parameter Name="clName" Type="varchar" Mode="In" />
+          <Parameter Name="clAddress" Type="varchar" Mode="In" />
+          <Parameter Name="clEmail" Type="varchar" Mode="In" />
+          <Parameter Name="clPhoneNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_concept_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="coId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_concept_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="coId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_concept_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="coId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_concept_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="coProductId" Type="int" Mode="In" />
+          <Parameter Name="coSaleId" Type="int" Mode="In" />
+          <Parameter Name="coQuantity" Type="int" Mode="In" />
+          <Parameter Name="coUnitPrice" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_concept_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_concept_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="coId" Type="int" Mode="In" />
+          <Parameter Name="coProductId" Type="int" Mode="In" />
+          <Parameter Name="coSaleId" Type="int" Mode="In" />
+          <Parameter Name="coQuantity" Type="int" Mode="In" />
+          <Parameter Name="coUnitPrice" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_product_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_product_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_product_getByCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="code" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_product_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_product_getList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_product_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCategoryId" Type="int" Mode="In" />
+          <Parameter Name="pCode" Type="int" Mode="In" />
+          <Parameter Name="pName" Type="varchar" Mode="In" />
+          <Parameter Name="pSellingPrice" Type="decimal" Mode="In" />
+          <Parameter Name="pStock" Type="int" Mode="In" />
+          <Parameter Name="pCost" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_product_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pCategoryId" Type="int" Mode="In" />
+          <Parameter Name="pCode" Type="int" Mode="In" />
+          <Parameter Name="pName" Type="varchar" Mode="In" />
+          <Parameter Name="pSellingPrice" Type="decimal" Mode="In" />
+          <Parameter Name="pStock" Type="int" Mode="In" />
+          <Parameter Name="pCost" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_purchase_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_purchase_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_purchase_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_purchase_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puSupplierId" Type="int" Mode="In" />
+          <Parameter Name="puProductId" Type="int" Mode="In" />
+          <Parameter Name="puQuantity" Type="int" Mode="In" />
+          <Parameter Name="puUnitCost" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_purchase_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_purchase_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="puId" Type="int" Mode="In" />
+          <Parameter Name="puSupplierId" Type="int" Mode="In" />
+          <Parameter Name="puProductId" Type="int" Mode="In" />
+          <Parameter Name="puQuantity" Type="int" Mode="In" />
+          <Parameter Name="puUnitCost" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_sale_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="saId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_sale_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="saId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_sale_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="saId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_sale_getlast" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_sale_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="saClientId" Type="int" Mode="In" />
+          <Parameter Name="saVendorId" Type="int" Mode="In" />
+          <Parameter Name="saDisconunt" Type="decimal" Mode="In" />
+          <Parameter Name="saTotal" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_sale_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_sale_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="saId" Type="int" Mode="In" />
+          <Parameter Name="saClientId" Type="int" Mode="In" />
+          <Parameter Name="saVendorId" Type="int" Mode="In" />
+          <Parameter Name="saDisconunt" Type="decimal" Mode="In" />
+          <Parameter Name="saTotal" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="sp_supplier_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sNit" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_supplier_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sNit" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_supplier_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sNit" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_supplier_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sNit" Type="int" Mode="In" />
+          <Parameter Name="sName" Type="varchar" Mode="In" />
+          <Parameter Name="sAddress" Type="varchar" Mode="In" />
+          <Parameter Name="sPhone" Type="varchar" Mode="In" />
+          <Parameter Name="sCity" Type="varchar" Mode="In" />
+          <Parameter Name="sWeb" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_supplier_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_supplier_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sNit" Type="int" Mode="In" />
+          <Parameter Name="sName" Type="varchar" Mode="In" />
+          <Parameter Name="sAddress" Type="varchar" Mode="In" />
+          <Parameter Name="sPhone" Type="varchar" Mode="In" />
+          <Parameter Name="sCity" Type="varchar" Mode="In" />
+          <Parameter Name="sWeb" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_vendor_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_vendor_deleteSoft" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_vendor_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_vendor_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDocumentId" Type="int" Mode="In" />
+          <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+          <Parameter Name="vName" Type="varchar" Mode="In" />
+          <Parameter Name="vAddress" Type="varchar" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vPhone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_vendor_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_vendor_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vDocumentNumber" Type="varchar" Mode="In" />
+          <Parameter Name="vName" Type="varchar" Mode="In" />
+          <Parameter Name="vAddress" Type="varchar" Mode="In" />
+          <Parameter Name="vEmail" Type="varchar" Mode="In" />
+          <Parameter Name="vPhone" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MercaFruverSVModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Concept_Sale" EntityType="Self.Concept_Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cstate" EntityType="Self.cstate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document_Type" EntityType="Self.Document_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Client" EntityType="Self.vw_Client" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Client].[clientId] AS [clientId], 
+    [vw_Client].[DocumentType] AS [DocumentType], 
+    [vw_Client].[DocumentNumber] AS [DocumentNumber], 
+    [vw_Client].[Name] AS [Name], 
+    [vw_Client].[Address] AS [Address], 
+    [vw_Client].[Email] AS [Email], 
+    [vw_Client].[Phone] AS [Phone]
+    FROM [dbo].[vw_Client] AS [vw_Client]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Concept" EntityType="Self.vw_Concept" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Concept].[conceptId] AS [conceptId], 
+    [vw_Concept].[Product] AS [Product], 
+    [vw_Concept].[Sale] AS [Sale], 
+    [vw_Concept].[Quantity] AS [Quantity], 
+    [vw_Concept].[UnitPrice] AS [UnitPrice]
+    FROM [dbo].[vw_Concept] AS [vw_Concept]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Product" EntityType="Self.vw_Product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Product].[productId] AS [productId], 
+    [vw_Product].[Code] AS [Code], 
+    [vw_Product].[Name] AS [Name], 
+    [vw_Product].[Category] AS [Category], 
+    [vw_Product].[Price] AS [Price], 
+    [vw_Product].[Stock] AS [Stock], 
+    [vw_Product].[Cost] AS [Cost]
+    FROM [dbo].[vw_Product] AS [vw_Product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Purchase" EntityType="Self.vw_Purchase" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Purchase].[purchaseId] AS [purchaseId], 
+    [vw_Purchase].[Supplier] AS [Supplier], 
+    [vw_Purchase].[Product] AS [Product], 
+    [vw_Purchase].[Quantity] AS [Quantity], 
+    [vw_Purchase].[UnitCost] AS [UnitCost], 
+    [vw_Purchase].[PurchaseDate] AS [PurchaseDate]
+    FROM [dbo].[vw_Purchase] AS [vw_Purchase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Sale" EntityType="Self.vw_Sale" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Sale].[saleId] AS [saleId], 
+    [vw_Sale].[Client] AS [Client], 
+    [vw_Sale].[Vendor] AS [Vendor], 
+    [vw_Sale].[SaleDate] AS [SaleDate], 
+    [vw_Sale].[Discount] AS [Discount], 
+    [vw_Sale].[Total] AS [Total]
+    FROM [dbo].[vw_Sale] AS [vw_Sale]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Supplier" EntityType="Self.vw_Supplier" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Supplier].[supplierId] AS [supplierId], 
+    [vw_Supplier].[Nit] AS [Nit], 
+    [vw_Supplier].[Name] AS [Name], 
+    [vw_Supplier].[Address] AS [Address], 
+    [vw_Supplier].[PhoneNumber] AS [PhoneNumber], 
+    [vw_Supplier].[City] AS [City], 
+    [vw_Supplier].[Webpage] AS [Webpage]
+    FROM [dbo].[vw_Supplier] AS [vw_Supplier]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Vendor" EntityType="Self.vw_Vendor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Vendor].[vendorId] AS [vendorId], 
+    [vw_Vendor].[DocumentType] AS [DocumentType], 
+    [vw_Vendor].[DocumentNumber] AS [DocumentNumber], 
+    [vw_Vendor].[Name] AS [Name], 
+    [vw_Vendor].[Address] AS [Address], 
+    [vw_Vendor].[Email] AS [Email], 
+    [vw_Vendor].[Phone] AS [Phone]
+    FROM [dbo].[vw_Vendor] AS [vw_Vendor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Category_cstate" Association="Self.FK_Category_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_cstate" Association="Self.FK_Client_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Document_Type" Association="Self.FK_Client_Document_Type">
+            <End Role="Document_Type" EntitySet="Document_Type" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concept_Sale_cstate" Association="Self.FK_Concept_Sale_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concept_Sale_Product" Association="Self.FK_Concept_Sale_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concept_Sale_Sale" Association="Self.FK_Concept_Sale_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_cstate" Association="Self.FK_Product_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_cstate" Association="Self.FK_Purchase_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Client" Association="Self.FK_Sale_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_cstate" Association="Self.FK_Sale_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_Vendor" Association="Self.FK_Sale_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_cstate" Association="Self.FK_Supplier_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_cstate" Association="Self.FK_Vendor_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Document_Type" Association="Self.FK_Vendor_Document_Type">
+            <End Role="Document_Type" EntitySet="Document_Type" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MercaFruverSVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MercaFruverSVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="MercaFruverSVModel.Category" />
+          <EntitySet Name="Product" EntityType="MercaFruverSVModel.Product" />
+          <AssociationSet Name="FK_Product_Category" Association="MercaFruverSVModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <FunctionImport Name="sp_category_delete">
+          <Parameter Name="cId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_category_getById" EntitySet="Category" ReturnType="Collection(MercaFruverSVModel.Category)">
+          <Parameter Name="cId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_category_insert">
+            <Parameter Name="cName" Mode="In" Type="String" />
+            <Parameter Name="cDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_category_list" EntitySet="Category" ReturnType="Collection(MercaFruverSVModel.Category)" />
+          <FunctionImport Name="sp_category_update">
+            <Parameter Name="cId" Mode="In" Type="Int32" />
+            <Parameter Name="cName" Mode="In" Type="String" />
+            <Parameter Name="cDescription" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_product_delete">
+          <Parameter Name="pCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_product_deleteSoft">
+          <Parameter Name="pCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_product_getByCode" EntitySet="Product" ReturnType="Collection(MercaFruverSVModel.Product)">
+          <Parameter Name="code" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_product_getList" EntitySet="vw_Product" ReturnType="Collection(MercaFruverSVModel.vw_Product)" />
+          <FunctionImport Name="sp_product_insert">
+            <Parameter Name="pCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="pCode" Mode="In" Type="Int32" />
+            <Parameter Name="pName" Mode="In" Type="String" />
+            <Parameter Name="pSellingPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="pStock" Mode="In" Type="Int32" />
+            <Parameter Name="pCost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_product_update">
+            <Parameter Name="pCategoryId" Mode="In" Type="Int32" />
+            <Parameter Name="pCode" Mode="In" Type="Int32" />
+            <Parameter Name="pName" Mode="In" Type="String" />
+            <Parameter Name="pSellingPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="pStock" Mode="In" Type="Int32" />
+            <Parameter Name="pCost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="Purchase" EntityType="MercaFruverSVModel.Purchase" />
+          <AssociationSet Name="FK_Purchase_Product" Association="MercaFruverSVModel.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <FunctionImport Name="sp_purchase_delete">
+          <Parameter Name="puId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_purchase_deleteSoft">
+          <Parameter Name="puId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_purchase_getById" EntitySet="Purchase" ReturnType="Collection(MercaFruverSVModel.Purchase)">
+          <Parameter Name="puId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_purchase_insert">
+            <Parameter Name="puSupplierId" Mode="In" Type="Int32" />
+            <Parameter Name="puProductId" Mode="In" Type="Int32" />
+            <Parameter Name="puQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="puUnitCost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_purchase_update">
+            <Parameter Name="puId" Mode="In" Type="Int32" />
+            <Parameter Name="puSupplierId" Mode="In" Type="Int32" />
+            <Parameter Name="puProductId" Mode="In" Type="Int32" />
+            <Parameter Name="puQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="puUnitCost" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="Supplier" EntityType="MercaFruverSVModel.Supplier" />
+          <AssociationSet Name="FK_Purchase_Supplier" Association="MercaFruverSVModel.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <FunctionImport Name="sp_supplier_delete">
+          <Parameter Name="sNit" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_supplier_deleteSoft">
+          <Parameter Name="sNit" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_supplier_getById" EntitySet="Supplier" ReturnType="Collection(MercaFruverSVModel.Supplier)">
+          <Parameter Name="sNit" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_supplier_insert">
+            <Parameter Name="sNit" Mode="In" Type="Int32" />
+            <Parameter Name="sName" Mode="In" Type="String" />
+            <Parameter Name="sAddress" Mode="In" Type="String" />
+            <Parameter Name="sPhone" Mode="In" Type="String" />
+            <Parameter Name="sCity" Mode="In" Type="String" />
+            <Parameter Name="sWeb" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_supplier_update">
+            <Parameter Name="sNit" Mode="In" Type="Int32" />
+            <Parameter Name="sName" Mode="In" Type="String" />
+            <Parameter Name="sAddress" Mode="In" Type="String" />
+            <Parameter Name="sPhone" Mode="In" Type="String" />
+            <Parameter Name="sCity" Mode="In" Type="String" />
+            <Parameter Name="sWeb" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Client" EntityType="MercaFruverSVModel.Client" />
+          <FunctionImport Name="sp_client_delete">
+          <Parameter Name="clDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_client_deleteSoft">
+          <Parameter Name="cDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_client_getByDocument" EntitySet="Client" ReturnType="Collection(MercaFruverSVModel.Client)">
+          <Parameter Name="clDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_client_insert">
+            <Parameter Name="clDocumentTypeId" Mode="In" Type="Int32" />
+            <Parameter Name="clDocumentNumber" Mode="In" Type="String" />
+            <Parameter Name="clName" Mode="In" Type="String" />
+            <Parameter Name="clAddress" Mode="In" Type="String" />
+            <Parameter Name="clEmail" Mode="In" Type="String" />
+            <Parameter Name="clPhoneNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_client_update">
+            <Parameter Name="clDocumentNumber" Mode="In" Type="String" />
+            <Parameter Name="clName" Mode="In" Type="String" />
+            <Parameter Name="clAddress" Mode="In" Type="String" />
+            <Parameter Name="clEmail" Mode="In" Type="String" />
+            <Parameter Name="clPhoneNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Concept_Sale" EntityType="MercaFruverSVModel.Concept_Sale" />
+          <AssociationSet Name="FK_Concept_Sale_Product" Association="MercaFruverSVModel.FK_Concept_Sale_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <FunctionImport Name="sp_concept_delete">
+          <Parameter Name="coId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_concept_deleteSoft">
+          <Parameter Name="coId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_concept_getById" EntitySet="Concept_Sale" ReturnType="Collection(MercaFruverSVModel.Concept_Sale)">
+          <Parameter Name="coId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_concept_insert">
+            <Parameter Name="coProductId" Mode="In" Type="Int32" />
+            <Parameter Name="coSaleId" Mode="In" Type="Int32" />
+            <Parameter Name="coQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="coUnitPrice" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_concept_update">
+            <Parameter Name="coId" Mode="In" Type="Int32" />
+            <Parameter Name="coProductId" Mode="In" Type="Int32" />
+            <Parameter Name="coSaleId" Mode="In" Type="Int32" />
+            <Parameter Name="coQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="coUnitPrice" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="Sale" EntityType="MercaFruverSVModel.Sale" />
+          <AssociationSet Name="FK_Sale_Client" Association="MercaFruverSVModel.FK_Sale_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concept_Sale_Sale" Association="MercaFruverSVModel.FK_Concept_Sale_Sale">
+            <End Role="Sale" EntitySet="Sale" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <FunctionImport Name="sp_sale_delete">
+          <Parameter Name="saId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sale_deleteSoft">
+          <Parameter Name="saId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sale_getById" EntitySet="Sale" ReturnType="Collection(MercaFruverSVModel.Sale)">
+          <Parameter Name="saId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sale_insert">
+            <Parameter Name="saClientId" Mode="In" Type="Int32" />
+            <Parameter Name="saVendorId" Mode="In" Type="Int32" />
+            <Parameter Name="saDisconunt" Mode="In" Type="Decimal" />
+            <Parameter Name="saTotal" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="sp_sale_update">
+            <Parameter Name="saId" Mode="In" Type="Int32" />
+            <Parameter Name="saClientId" Mode="In" Type="Int32" />
+            <Parameter Name="saVendorId" Mode="In" Type="Int32" />
+            <Parameter Name="saDisconunt" Mode="In" Type="Decimal" />
+            <Parameter Name="saTotal" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="Vendor" EntityType="MercaFruverSVModel.Vendor" />
+          <AssociationSet Name="FK_Sale_Vendor" Association="MercaFruverSVModel.FK_Sale_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <FunctionImport Name="sp_vendor_delete">
+          <Parameter Name="vDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_vendor_deleteSoft">
+          <Parameter Name="vDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_vendor_getById" EntitySet="Vendor" ReturnType="Collection(MercaFruverSVModel.Vendor)">
+          <Parameter Name="vDocumentNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_vendor_insert">
+            <Parameter Name="vDocumentId" Mode="In" Type="Int32" />
+            <Parameter Name="vDocumentNumber" Mode="In" Type="String" />
+            <Parameter Name="vName" Mode="In" Type="String" />
+            <Parameter Name="vAddress" Mode="In" Type="String" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vPhone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_vendor_update">
+            <Parameter Name="vDocumentNumber" Mode="In" Type="String" />
+            <Parameter Name="vName" Mode="In" Type="String" />
+            <Parameter Name="vAddress" Mode="In" Type="String" />
+            <Parameter Name="vEmail" Mode="In" Type="String" />
+            <Parameter Name="vPhone" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="cstate" EntityType="MercaFruverSVModel.cstate" />
+          <EntitySet Name="Document_Type" EntityType="MercaFruverSVModel.Document_Type" />
+          <AssociationSet Name="FK_Category_cstate" Association="MercaFruverSVModel.FK_Category_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_cstate" Association="MercaFruverSVModel.FK_Client_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Document_Type" Association="MercaFruverSVModel.FK_Client_Document_Type">
+            <End Role="Document_Type" EntitySet="Document_Type" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concept_Sale_cstate" Association="MercaFruverSVModel.FK_Concept_Sale_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Concept_Sale" EntitySet="Concept_Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_cstate" Association="MercaFruverSVModel.FK_Product_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_cstate" Association="MercaFruverSVModel.FK_Purchase_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sale_cstate" Association="MercaFruverSVModel.FK_Sale_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Sale" EntitySet="Sale" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_cstate" Association="MercaFruverSVModel.FK_Supplier_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_cstate" Association="MercaFruverSVModel.FK_Vendor_cstate">
+            <End Role="cstate" EntitySet="cstate" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Document_Type" Association="MercaFruverSVModel.FK_Vendor_Document_Type">
+            <End Role="Document_Type" EntitySet="Document_Type" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <FunctionImport Name="sp_supplier_list" EntitySet="vw_Supplier" ReturnType="Collection(MercaFruverSVModel.vw_Supplier)" />
+          <FunctionImport Name="sp_purchase_list" EntitySet="vw_Purchase" ReturnType="Collection(MercaFruverSVModel.vw_Purchase)" />
+          <EntitySet Name="vw_Product" EntityType="MercaFruverSVModel.vw_Product" />
+          <EntitySet Name="vw_Purchase" EntityType="MercaFruverSVModel.vw_Purchase" />
+          <EntitySet Name="vw_Supplier" EntityType="MercaFruverSVModel.vw_Supplier" />
+          <EntitySet Name="vw_Sale" EntityType="MercaFruverSVModel.vw_Sale" />
+          <FunctionImport Name="sp_sale_list" EntitySet="vw_Sale" ReturnType="Collection(MercaFruverSVModel.vw_Sale)" />
+          <EntitySet Name="vw_Concept" EntityType="MercaFruverSVModel.vw_Concept" />
+          <FunctionImport Name="sp_concept_list" EntitySet="vw_Concept" ReturnType="Collection(MercaFruverSVModel.vw_Concept)" />
+          <EntitySet Name="vw_Client" EntityType="MercaFruverSVModel.vw_Client" />
+          <EntitySet Name="vw_Vendor" EntityType="MercaFruverSVModel.vw_Vendor" />
+          <FunctionImport Name="sp_client_list" EntitySet="vw_Client" ReturnType="Collection(MercaFruverSVModel.vw_Client)" />
+          <FunctionImport Name="sp_vendor_list" EntitySet="vw_Vendor" ReturnType="Collection(MercaFruverSVModel.vw_Vendor)" />
+          <FunctionImport Name="sp_sale_getlast" EntitySet="Sale" ReturnType="Collection(MercaFruverSVModel.Sale)" />
+          <FunctionImport Name="sp_product_getById" EntitySet="Product" ReturnType="Collection(MercaFruverSVModel.Product)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="categoryDescription" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="categoryStateId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="MercaFruverSVModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Category_cstate" FromRole="Category" ToRole="cstate" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="productId" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="productCode" Type="Int32" />
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productSellingPrice" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="productStock" Type="Int32" />
+          <Property Name="productCost" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="productStateId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="MercaFruverSVModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Purchase" Relationship="MercaFruverSVModel.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
+          <NavigationProperty Name="Concept_Sale" Relationship="MercaFruverSVModel.FK_Concept_Sale_Product" FromRole="Product" ToRole="Concept_Sale" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Product_cstate" FromRole="Product" ToRole="cstate" />
+        </EntityType>
+        <Association Name="FK_Product_Category">
+          <End Type="MercaFruverSVModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="productCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_category_getById_Result">
+          <Property Type="Int32" Name="categoryId" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="categoryDescription" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="categoryStateId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_category_list_Result">
+          <Property Type="Int32" Name="categoryId" Nullable="false" />
+          <Property Type="String" Name="categoryName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="categoryDescription" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="categoryStateId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_product_getByCode_Result">
+          <Property Type="Int32" Name="productId" Nullable="false" />
+          <Property Type="Int32" Name="productCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="productCode" Nullable="true" />
+          <Property Type="String" Name="productName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="productSellingPrice" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStock" Nullable="true" />
+          <Property Type="Decimal" Name="productCost" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStateId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_product_getList_Result">
+          <Property Type="Int32" Name="productId" Nullable="false" />
+          <Property Type="Int32" Name="Code" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="Stock" Nullable="true" />
+          <Property Type="Decimal" Name="Cost" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_product_list_Result">
+          <Property Type="Int32" Name="productId" Nullable="false" />
+          <Property Type="Int32" Name="productCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="productCode" Nullable="true" />
+          <Property Type="String" Name="productName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="productSellingPrice" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStock" Nullable="true" />
+          <Property Type="Decimal" Name="productCost" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStateId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="purchaseId" />
+          </Key>
+          <Property Name="purchaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchaseSupplierId" Type="Int32" Nullable="false" />
+          <Property Name="purchaseProductId" Type="Int32" Nullable="false" />
+          <Property Name="purchaseQuantity" Type="Int32" Nullable="false" />
+          <Property Name="purchaseUnitCost" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="purchaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="purchaseStateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MercaFruverSVModel.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="Supplier" Relationship="MercaFruverSVModel.FK_Purchase_Supplier" FromRole="Purchase" ToRole="Supplier" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Purchase_cstate" FromRole="Purchase" ToRole="cstate" />
+        </EntityType>
+        <Association Name="FK_Purchase_Product">
+          <End Type="MercaFruverSVModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_purchase_getById_Result">
+          <Property Type="Int32" Name="purchaseId" Nullable="false" />
+          <Property Type="Int32" Name="purchaseSupplierId" Nullable="false" />
+          <Property Type="Int32" Name="purchaseProductId" Nullable="false" />
+          <Property Type="Int32" Name="purchaseQuantity" Nullable="false" />
+          <Property Type="Decimal" Name="purchaseUnitCost" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="DateTime" Name="purchaseDate" Nullable="false" />
+          <Property Type="Int32" Name="purchaseStateId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_purchase_list_Result">
+          <Property Type="String" Name="Supplier" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Product" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="UnitCost" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supplierId" />
+          </Key>
+          <Property Name="supplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplierNit" Type="Int32" Nullable="false" />
+          <Property Name="supplierName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="supplierAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="supplierPhoneNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="supplierCity" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="supplierWebpage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="supplierStateId" Type="Int32" />
+          <NavigationProperty Name="Purchase" Relationship="MercaFruverSVModel.FK_Purchase_Supplier" FromRole="Supplier" ToRole="Purchase" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Supplier_cstate" FromRole="Supplier" ToRole="cstate" />
+        </EntityType>
+        <Association Name="FK_Purchase_Supplier">
+          <End Type="MercaFruverSVModel.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseSupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_supplier_getById_Result">
+          <Property Type="Int32" Name="supplierId" Nullable="false" />
+          <Property Type="Int32" Name="supplierNit" Nullable="false" />
+          <Property Type="String" Name="supplierName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="supplierAddress" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="supplierPhoneNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="supplierCity" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="supplierWebpage" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="supplierStateId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+          </Key>
+          <Property Name="clientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="clientDocumentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="clientDocumentNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="clientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clientEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="clientPhoneNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="clientStateId" Type="Int32" />
+          <NavigationProperty Name="Sale" Relationship="MercaFruverSVModel.FK_Sale_Client" FromRole="Client" ToRole="Sale" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Client_cstate" FromRole="Client" ToRole="cstate" />
+          <NavigationProperty Name="Document_Type" Relationship="MercaFruverSVModel.FK_Client_Document_Type" FromRole="Client" ToRole="Document_Type" />
+        </EntityType>
+        <ComplexType Name="sp_client_getByDocument_Result">
+          <Property Type="Int32" Name="clientId" Nullable="false" />
+          <Property Type="Int32" Name="clientDocumentTypeId" Nullable="false" />
+          <Property Type="String" Name="clientDocumentNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="clientName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="clientAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="clientEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="clientPhoneNumber" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="clientStateId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Concept_Sale">
+          <Key>
+            <PropertyRef Name="conceptId" />
+          </Key>
+          <Property Name="conceptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="conceptProductId" Type="Int32" Nullable="false" />
+          <Property Name="conceptSaleId" Type="Int32" Nullable="false" />
+          <Property Name="conceptQuantity" Type="Int32" Nullable="false" />
+          <Property Name="conceptUnitPrice" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="conceptStateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="MercaFruverSVModel.FK_Concept_Sale_Product" FromRole="Concept_Sale" ToRole="Product" />
+          <NavigationProperty Name="Sale" Relationship="MercaFruverSVModel.FK_Concept_Sale_Sale" FromRole="Concept_Sale" ToRole="Sale" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Concept_Sale_cstate" FromRole="Concept_Sale" ToRole="cstate" />
+        </EntityType>
+        <Association Name="FK_Concept_Sale_Product">
+          <End Type="MercaFruverSVModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Concept_Sale" Role="Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_concept_getById_Result">
+          <Property Type="Int32" Name="conceptId" Nullable="false" />
+          <Property Type="Int32" Name="conceptProductId" Nullable="false" />
+          <Property Type="Int32" Name="conceptSaleId" Nullable="false" />
+          <Property Type="Int32" Name="conceptQuantity" Nullable="false" />
+          <Property Type="Decimal" Name="conceptUnitPrice" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="conceptStateId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_concept_list_Result">
+          <Property Type="String" Name="Product" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Sale" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+          </Key>
+          <Property Name="saleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="saleClientId" Type="Int32" Nullable="false" />
+          <Property Name="saleVendorId" Type="Int32" Nullable="false" />
+          <Property Name="saleDate" Type="DateTime" Precision="0" />
+          <Property Name="saleDiscount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="saleTotal" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="saleStateId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="MercaFruverSVModel.FK_Sale_Client" FromRole="Sale" ToRole="Client" />
+          <NavigationProperty Name="Concept_Sale" Relationship="MercaFruverSVModel.FK_Concept_Sale_Sale" FromRole="Sale" ToRole="Concept_Sale" />
+          <NavigationProperty Name="Vendor" Relationship="MercaFruverSVModel.FK_Sale_Vendor" FromRole="Sale" ToRole="Vendor" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Sale_cstate" FromRole="Sale" ToRole="cstate" />
+        </EntityType>
+        <Association Name="FK_Sale_Client">
+          <End Type="MercaFruverSVModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="clientId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concept_Sale_Sale">
+          <End Type="MercaFruverSVModel.Sale" Role="Sale" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Concept_Sale" Role="Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="saleId" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptSaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_sale_getById_Result">
+          <Property Type="Int32" Name="saleId" Nullable="false" />
+          <Property Type="Int32" Name="saleClientId" Nullable="false" />
+          <Property Type="Int32" Name="saleVendorId" Nullable="false" />
+          <Property Type="DateTime" Name="saleDate" Nullable="true" />
+          <Property Type="Decimal" Name="saleDiscount" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Decimal" Name="saleTotal" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="saleStateId" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="vendorId" />
+          </Key>
+          <Property Name="vendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vendorDocumentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="vendorDocumentTypeNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vendorName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vendorAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="vendorEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="vendorPhoneNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vendorStateId" Type="Int32" />
+          <NavigationProperty Name="Sale" Relationship="MercaFruverSVModel.FK_Sale_Vendor" FromRole="Vendor" ToRole="Sale" />
+          <NavigationProperty Name="cstate" Relationship="MercaFruverSVModel.FK_Vendor_cstate" FromRole="Vendor" ToRole="cstate" />
+          <NavigationProperty Name="Document_Type" Relationship="MercaFruverSVModel.FK_Vendor_Document_Type" FromRole="Vendor" ToRole="Document_Type" />
+        </EntityType>
+        <Association Name="FK_Sale_Vendor">
+          <End Type="MercaFruverSVModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="vendorId" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleVendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_vendor_getById_Result">
+          <Property Type="Int32" Name="vendorId" Nullable="false" />
+          <Property Type="Int32" Name="vendorDocumentTypeId" Nullable="false" />
+          <Property Type="String" Name="vendorDocumentTypeNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="vendorName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="vendorAddress" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="vendorEmail" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="vendorPhoneNumber" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="vendorStateId" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="cstate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="MercaFruverSVModel.FK_Category_cstate" FromRole="cstate" ToRole="Category" />
+          <NavigationProperty Name="Client" Relationship="MercaFruverSVModel.FK_Client_cstate" FromRole="cstate" ToRole="Client" />
+          <NavigationProperty Name="Concept_Sale" Relationship="MercaFruverSVModel.FK_Concept_Sale_cstate" FromRole="cstate" ToRole="Concept_Sale" />
+          <NavigationProperty Name="Product" Relationship="MercaFruverSVModel.FK_Product_cstate" FromRole="cstate" ToRole="Product" />
+          <NavigationProperty Name="Purchase" Relationship="MercaFruverSVModel.FK_Purchase_cstate" FromRole="cstate" ToRole="Purchase" />
+          <NavigationProperty Name="Sale" Relationship="MercaFruverSVModel.FK_Sale_cstate" FromRole="cstate" ToRole="Sale" />
+          <NavigationProperty Name="Supplier" Relationship="MercaFruverSVModel.FK_Supplier_cstate" FromRole="cstate" ToRole="Supplier" />
+          <NavigationProperty Name="Vendor" Relationship="MercaFruverSVModel.FK_Vendor_cstate" FromRole="cstate" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Document_Type">
+          <Key>
+            <PropertyRef Name="documentTypeId" />
+          </Key>
+          <Property Name="documentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="documentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Client" Relationship="MercaFruverSVModel.FK_Client_Document_Type" FromRole="Document_Type" ToRole="Client" />
+          <NavigationProperty Name="Vendor" Relationship="MercaFruverSVModel.FK_Vendor_Document_Type" FromRole="Document_Type" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_Category_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="0..1" />
+          <End Type="MercaFruverSVModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="categoryStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="0..1" />
+          <End Type="MercaFruverSVModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="clientStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Document_Type">
+          <End Type="MercaFruverSVModel.Document_Type" Role="Document_Type" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Type">
+              <PropertyRef Name="documentTypeId" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="clientDocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concept_Sale_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Concept_Sale" Role="Concept_Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Concept_Sale">
+              <PropertyRef Name="conceptStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="0..1" />
+          <End Type="MercaFruverSVModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="productStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="purchaseStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sale_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Sale" Role="Sale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="saleStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="0..1" />
+          <End Type="MercaFruverSVModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="supplierStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_cstate">
+          <End Type="MercaFruverSVModel.cstate" Role="cstate" Multiplicity="0..1" />
+          <End Type="MercaFruverSVModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cstate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="vendorStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Document_Type">
+          <End Type="MercaFruverSVModel.Document_Type" Role="Document_Type" Multiplicity="1" />
+          <End Type="MercaFruverSVModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document_Type">
+              <PropertyRef Name="documentTypeId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="vendorDocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_supplier_list_Result">
+          <Property Type="Int32" Name="supplierId" Nullable="false" />
+          <Property Type="Int32" Name="Nit" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Webpage" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_purchase_list_Result1">
+          <Property Type="Int32" Name="purchaseId" Nullable="false" />
+          <Property Type="String" Name="Supplier" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Product" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="UnitCost" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="vw_Product">
+          <Key>
+            <PropertyRef Name="productId" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_Purchase">
+          <Key>
+            <PropertyRef Name="purchaseId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Quantity" />
+            <PropertyRef Name="UnitCost" />
+            <PropertyRef Name="PurchaseDate" />
+          </Key>
+          <Property Name="purchaseId" Type="Int32" Nullable="false" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="vw_Supplier">
+          <Key>
+            <PropertyRef Name="supplierId" />
+            <PropertyRef Name="Nit" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="City" />
+          </Key>
+          <Property Name="supplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Webpage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Sale">
+          <Key>
+            <PropertyRef Name="saleId" />
+            <PropertyRef Name="Client" />
+            <PropertyRef Name="Vendor" />
+            <PropertyRef Name="Total" />
+          </Key>
+          <Property Name="saleId" Type="Int32" Nullable="false" />
+          <Property Name="Client" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vendor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SaleDate" Type="DateTime" Precision="0" />
+          <Property Name="Discount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="vw_Concept">
+          <Key>
+            <PropertyRef Name="conceptId" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Sale" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="conceptId" Type="Int32" Nullable="false" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sale" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <ComplexType Name="sp_concept_list_Result1">
+          <Property Type="Int32" Name="conceptId" Nullable="false" />
+          <Property Type="String" Name="Product" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Sale" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="UnitPrice" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <EntityType Name="vw_Client">
+          <Key>
+            <PropertyRef Name="clientId" />
+            <PropertyRef Name="DocumentNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="clientId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Vendor">
+          <Key>
+            <PropertyRef Name="vendorId" />
+            <PropertyRef Name="DocumentNumber" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+          </Key>
+          <Property Name="vendorId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="sp_client_list_Result">
+          <Property Type="Int32" Name="ClientId" Nullable="false" />
+          <Property Type="String" Name="DocumentType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocumentNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_vendor_list_Result">
+          <Property Type="Int32" Name="vendorId" Nullable="false" />
+          <Property Type="String" Name="DocumentType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocumentNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_sale_getlast_Result">
+          <Property Type="Int32" Name="saleId" Nullable="false" />
+          <Property Type="Int32" Name="saleClientId" Nullable="false" />
+          <Property Type="Int32" Name="saleVendorId" Nullable="false" />
+          <Property Type="DateTime" Name="saleDate" Nullable="true" />
+          <Property Type="Decimal" Name="saleDiscount" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Decimal" Name="saleTotal" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="saleStateId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_product_getById_Result">
+          <Property Type="Int32" Name="productId" Nullable="false" />
+          <Property Type="Int32" Name="productCategoryId" Nullable="false" />
+          <Property Type="Int32" Name="productCode" Nullable="true" />
+          <Property Type="String" Name="productName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="productSellingPrice" Nullable="false" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStock" Nullable="true" />
+          <Property Type="Decimal" Name="productCost" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Int32" Name="productStateId" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MercaFruverSVModelStoreContainer" CdmEntityContainer="MercaFruverSVEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="categoryStateId" ColumnName="categoryStateId" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="productStateId" ColumnName="productStateId" />
+                <ScalarProperty Name="productCost" ColumnName="productCost" />
+                <ScalarProperty Name="productStock" ColumnName="productStock" />
+                <ScalarProperty Name="productSellingPrice" ColumnName="productSellingPrice" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="productCategoryId" ColumnName="productCategoryId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_category_delete" FunctionName="MercaFruverSVModel.Store.sp_category_delete" />
+          <FunctionImportMapping FunctionImportName="sp_category_getById" FunctionName="MercaFruverSVModel.Store.sp_category_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_category_insert" FunctionName="MercaFruverSVModel.Store.sp_category_insert" />
+          <FunctionImportMapping FunctionImportName="sp_category_list" FunctionName="MercaFruverSVModel.Store.sp_category_list">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_category_update" FunctionName="MercaFruverSVModel.Store.sp_category_update" />
+          <FunctionImportMapping FunctionImportName="sp_product_delete" FunctionName="MercaFruverSVModel.Store.sp_product_delete" />
+          <FunctionImportMapping FunctionImportName="sp_product_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_product_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_product_getByCode" FunctionName="MercaFruverSVModel.Store.sp_product_getByCode">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_product_getList" FunctionName="MercaFruverSVModel.Store.sp_product_getList">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_product_insert" FunctionName="MercaFruverSVModel.Store.sp_product_insert" />
+          <FunctionImportMapping FunctionImportName="sp_product_update" FunctionName="MercaFruverSVModel.Store.sp_product_update" />
+          <EntitySetMapping Name="Purchase">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="purchaseStateId" ColumnName="purchaseStateId" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+                <ScalarProperty Name="purchaseUnitCost" ColumnName="purchaseUnitCost" />
+                <ScalarProperty Name="purchaseQuantity" ColumnName="purchaseQuantity" />
+                <ScalarProperty Name="purchaseProductId" ColumnName="purchaseProductId" />
+                <ScalarProperty Name="purchaseSupplierId" ColumnName="purchaseSupplierId" />
+                <ScalarProperty Name="purchaseId" ColumnName="purchaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_purchase_delete" FunctionName="MercaFruverSVModel.Store.sp_purchase_delete" />
+          <FunctionImportMapping FunctionImportName="sp_purchase_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_purchase_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_purchase_getById" FunctionName="MercaFruverSVModel.Store.sp_purchase_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_purchase_insert" FunctionName="MercaFruverSVModel.Store.sp_purchase_insert" />
+          <FunctionImportMapping FunctionImportName="sp_purchase_update" FunctionName="MercaFruverSVModel.Store.sp_purchase_update" />
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="supplierStateId" ColumnName="supplierStateId" />
+                <ScalarProperty Name="supplierWebpage" ColumnName="supplierWebpage" />
+                <ScalarProperty Name="supplierCity" ColumnName="supplierCity" />
+                <ScalarProperty Name="supplierPhoneNumber" ColumnName="supplierPhoneNumber" />
+                <ScalarProperty Name="supplierAddress" ColumnName="supplierAddress" />
+                <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+                <ScalarProperty Name="supplierNit" ColumnName="supplierNit" />
+                <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_supplier_delete" FunctionName="MercaFruverSVModel.Store.sp_supplier_delete" />
+          <FunctionImportMapping FunctionImportName="sp_supplier_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_supplier_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_supplier_getById" FunctionName="MercaFruverSVModel.Store.sp_supplier_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_supplier_insert" FunctionName="MercaFruverSVModel.Store.sp_supplier_insert" />
+          <FunctionImportMapping FunctionImportName="sp_supplier_update" FunctionName="MercaFruverSVModel.Store.sp_supplier_update" />
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="clientStateId" ColumnName="clientStateId" />
+                <ScalarProperty Name="clientPhoneNumber" ColumnName="clientPhoneNumber" />
+                <ScalarProperty Name="clientEmail" ColumnName="clientEmail" />
+                <ScalarProperty Name="clientAddress" ColumnName="clientAddress" />
+                <ScalarProperty Name="clientName" ColumnName="clientName" />
+                <ScalarProperty Name="clientDocumentNumber" ColumnName="clientDocumentNumber" />
+                <ScalarProperty Name="clientDocumentTypeId" ColumnName="clientDocumentTypeId" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_client_delete" FunctionName="MercaFruverSVModel.Store.sp_client_delete" />
+          <FunctionImportMapping FunctionImportName="sp_client_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_client_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_client_getByDocument" FunctionName="MercaFruverSVModel.Store.sp_client_getByDocument">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_client_insert" FunctionName="MercaFruverSVModel.Store.sp_client_insert" />
+          <FunctionImportMapping FunctionImportName="sp_client_update" FunctionName="MercaFruverSVModel.Store.sp_client_update" />
+          <EntitySetMapping Name="Concept_Sale">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Concept_Sale">
+              <MappingFragment StoreEntitySet="Concept_Sale">
+                <ScalarProperty Name="conceptStateId" ColumnName="conceptStateId" />
+                <ScalarProperty Name="conceptUnitPrice" ColumnName="conceptUnitPrice" />
+                <ScalarProperty Name="conceptQuantity" ColumnName="conceptQuantity" />
+                <ScalarProperty Name="conceptSaleId" ColumnName="conceptSaleId" />
+                <ScalarProperty Name="conceptProductId" ColumnName="conceptProductId" />
+                <ScalarProperty Name="conceptId" ColumnName="conceptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_concept_delete" FunctionName="MercaFruverSVModel.Store.sp_concept_delete" />
+          <FunctionImportMapping FunctionImportName="sp_concept_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_concept_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_concept_getById" FunctionName="MercaFruverSVModel.Store.sp_concept_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_concept_insert" FunctionName="MercaFruverSVModel.Store.sp_concept_insert" />
+          <FunctionImportMapping FunctionImportName="sp_concept_update" FunctionName="MercaFruverSVModel.Store.sp_concept_update" />
+          <EntitySetMapping Name="Sale">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Sale">
+              <MappingFragment StoreEntitySet="Sale">
+                <ScalarProperty Name="saleStateId" ColumnName="saleStateId" />
+                <ScalarProperty Name="saleTotal" ColumnName="saleTotal" />
+                <ScalarProperty Name="saleDiscount" ColumnName="saleDiscount" />
+                <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+                <ScalarProperty Name="saleVendorId" ColumnName="saleVendorId" />
+                <ScalarProperty Name="saleClientId" ColumnName="saleClientId" />
+                <ScalarProperty Name="saleId" ColumnName="saleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_sale_delete" FunctionName="MercaFruverSVModel.Store.sp_sale_delete" />
+          <FunctionImportMapping FunctionImportName="sp_sale_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_sale_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_sale_getById" FunctionName="MercaFruverSVModel.Store.sp_sale_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_sale_insert" FunctionName="MercaFruverSVModel.Store.sp_sale_insert" />
+          <FunctionImportMapping FunctionImportName="sp_sale_update" FunctionName="MercaFruverSVModel.Store.sp_sale_update" />
+          <EntitySetMapping Name="Vendor">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="vendorStateId" ColumnName="vendorStateId" />
+                <ScalarProperty Name="vendorPhoneNumber" ColumnName="vendorPhoneNumber" />
+                <ScalarProperty Name="vendorEmail" ColumnName="vendorEmail" />
+                <ScalarProperty Name="vendorAddress" ColumnName="vendorAddress" />
+                <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+                <ScalarProperty Name="vendorDocumentTypeNumber" ColumnName="vendorDocumentTypeNumber" />
+                <ScalarProperty Name="vendorDocumentTypeId" ColumnName="vendorDocumentTypeId" />
+                <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_vendor_delete" FunctionName="MercaFruverSVModel.Store.sp_vendor_delete" />
+          <FunctionImportMapping FunctionImportName="sp_vendor_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_vendor_deleteSoft" />
+          <FunctionImportMapping FunctionImportName="sp_vendor_getById" FunctionName="MercaFruverSVModel.Store.sp_vendor_getById">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_vendor_insert" FunctionName="MercaFruverSVModel.Store.sp_vendor_insert" />
+          <FunctionImportMapping FunctionImportName="sp_vendor_update" FunctionName="MercaFruverSVModel.Store.sp_vendor_update" />
+          <EntitySetMapping Name="cstate">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.cstate">
+              <MappingFragment StoreEntitySet="cstate">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document_Type">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.Document_Type">
+              <MappingFragment StoreEntitySet="Document_Type">
+                <ScalarProperty Name="documentTypeName" ColumnName="documentTypeName" />
+                <ScalarProperty Name="documentTypeId" ColumnName="documentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_supplier_list" FunctionName="MercaFruverSVModel.Store.sp_supplier_list">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_purchase_list" FunctionName="MercaFruverSVModel.Store.sp_purchase_list">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vw_Product">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Product">
+              <MappingFragment StoreEntitySet="vw_Product">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Purchase">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Purchase">
+              <MappingFragment StoreEntitySet="vw_Purchase">
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="purchaseId" ColumnName="purchaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Supplier">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Supplier">
+              <MappingFragment StoreEntitySet="vw_Supplier">
+                <ScalarProperty Name="Webpage" ColumnName="Webpage" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Sale">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Sale">
+              <MappingFragment StoreEntitySet="vw_Sale">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="saleId" ColumnName="saleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_sale_list" FunctionName="MercaFruverSVModel.Store.sp_sale_list">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vw_Concept">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Concept">
+              <MappingFragment StoreEntitySet="vw_Concept">
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="conceptId" ColumnName="conceptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_concept_list" FunctionName="MercaFruverSVModel.Store.sp_concept_list">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vw_Client">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Client">
+              <MappingFragment StoreEntitySet="vw_Client">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="clientId" ColumnName="clientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Vendor">
+            <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Vendor">
+              <MappingFragment StoreEntitySet="vw_Vendor">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+                <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+                <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_client_list" FunctionName="MercaFruverSVModel.Store.sp_client_list">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_vendor_list" FunctionName="MercaFruverSVModel.Store.sp_vendor_list">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_sale_getlast" FunctionName="MercaFruverSVModel.Store.sp_sale_getlast">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_product_getById" FunctionName="MercaFruverSVModel.Store.sp_product_getById">
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

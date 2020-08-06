@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Login.Users>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Login</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name_User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password_User)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_User)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name_User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.password_User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_User)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_User }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_User }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_User })
+        </td>
+    </tr>
+}
+
+</table>

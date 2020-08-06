@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc64f2a2429f4a58a8e041d934de2b10" Name="Diagram1">
+        <EntityTypeShape EntityType="MercaFruverSVModel.Category" Width="1.5" PointX="3" PointY="1.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Product" Width="1.5" PointX="4.875" PointY="1" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Product_Category" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Purchase" Width="1.5" PointX="7.25" PointY="1" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Purchase_Product" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Supplier" Width="1.5" PointX="2.75" PointY="3.25" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Purchase_Supplier" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Client" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Concept_Sale" Width="1.5" PointX="3" PointY="2.125" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Concept_Sale_Product" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Sale" Width="1.5" PointX="9" PointY="4.75" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Sale_Client" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Concept_Sale_Sale" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Vendor" Width="1.5" PointX="9.375" PointY="1" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Sale_Vendor" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.cstate" Width="1.5" PointX="6.25" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.Document_Type" Width="1.5" PointX="6.25" PointY="4.5" IsExpanded="false" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Category_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Client_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Client_Document_Type" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Concept_Sale_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Product_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Purchase_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Sale_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Supplier_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Vendor_cstate" />
+        <AssociationConnector Association="MercaFruverSVModel.FK_Vendor_Document_Type" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Product" Width="1.5" PointX="0.625" PointY="2.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Purchase" Width="1.5" PointX="0.625" PointY="1.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Supplier" Width="1.5" PointX="0.625" PointY="1" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Sale" Width="1.5" PointX="0.625" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Concept" Width="1.5" PointX="0.625" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Client" Width="1.5" PointX="0.625" PointY="4.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="MercaFruverSVModel.vw_Vendor" Width="1.5" PointX="0.625" PointY="4.875" IsExpanded="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

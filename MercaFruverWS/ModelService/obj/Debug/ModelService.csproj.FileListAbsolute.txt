@@ -1,0 +1,12 @@
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\ModelService.dll.config
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\ModelService.dll
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\ModelService.pdb
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\EntityFramework.dll
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\EntityFramework.xml
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\obj\Debug\ModelService.csproj.CoreCompileInputs.cache
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\obj\Debug\ModelService.csproj.CopyComplete
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\obj\Debug\ModelService.dll
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\obj\Debug\ModelService.pdb
+C:\Users\ISABEL\source\repos\MercaFruverWS\ModelService\obj\Debug\ModelService.csprojAssemblyReference.cache

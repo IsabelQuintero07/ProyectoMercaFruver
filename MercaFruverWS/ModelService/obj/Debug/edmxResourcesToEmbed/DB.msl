@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MercaFruverSVModelStoreContainer" CdmEntityContainer="MercaFruverSVEntities">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="categoryStateId" ColumnName="categoryStateId" />
+          <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="productStateId" ColumnName="productStateId" />
+          <ScalarProperty Name="productCost" ColumnName="productCost" />
+          <ScalarProperty Name="productStock" ColumnName="productStock" />
+          <ScalarProperty Name="productSellingPrice" ColumnName="productSellingPrice" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="productCode" ColumnName="productCode" />
+          <ScalarProperty Name="productCategoryId" ColumnName="productCategoryId" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_category_delete" FunctionName="MercaFruverSVModel.Store.sp_category_delete" />
+    <FunctionImportMapping FunctionImportName="sp_category_getById" FunctionName="MercaFruverSVModel.Store.sp_category_getById" />
+    <FunctionImportMapping FunctionImportName="sp_category_insert" FunctionName="MercaFruverSVModel.Store.sp_category_insert" />
+    <FunctionImportMapping FunctionImportName="sp_category_list" FunctionName="MercaFruverSVModel.Store.sp_category_list" />
+    <FunctionImportMapping FunctionImportName="sp_category_update" FunctionName="MercaFruverSVModel.Store.sp_category_update" />
+    <FunctionImportMapping FunctionImportName="sp_product_delete" FunctionName="MercaFruverSVModel.Store.sp_product_delete" />
+    <FunctionImportMapping FunctionImportName="sp_product_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_product_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_product_getByCode" FunctionName="MercaFruverSVModel.Store.sp_product_getByCode" />
+    <FunctionImportMapping FunctionImportName="sp_product_getList" FunctionName="MercaFruverSVModel.Store.sp_product_getList" />
+    <FunctionImportMapping FunctionImportName="sp_product_insert" FunctionName="MercaFruverSVModel.Store.sp_product_insert" />
+    <FunctionImportMapping FunctionImportName="sp_product_update" FunctionName="MercaFruverSVModel.Store.sp_product_update" />
+    <EntitySetMapping Name="Purchase">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Purchase">
+        <MappingFragment StoreEntitySet="Purchase">
+          <ScalarProperty Name="purchaseStateId" ColumnName="purchaseStateId" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="purchaseUnitCost" ColumnName="purchaseUnitCost" />
+          <ScalarProperty Name="purchaseQuantity" ColumnName="purchaseQuantity" />
+          <ScalarProperty Name="purchaseProductId" ColumnName="purchaseProductId" />
+          <ScalarProperty Name="purchaseSupplierId" ColumnName="purchaseSupplierId" />
+          <ScalarProperty Name="purchaseId" ColumnName="purchaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_purchase_delete" FunctionName="MercaFruverSVModel.Store.sp_purchase_delete" />
+    <FunctionImportMapping FunctionImportName="sp_purchase_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_purchase_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_purchase_getById" FunctionName="MercaFruverSVModel.Store.sp_purchase_getById" />
+    <FunctionImportMapping FunctionImportName="sp_purchase_insert" FunctionName="MercaFruverSVModel.Store.sp_purchase_insert" />
+    <FunctionImportMapping FunctionImportName="sp_purchase_update" FunctionName="MercaFruverSVModel.Store.sp_purchase_update" />
+    <EntitySetMapping Name="Supplier">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="supplierStateId" ColumnName="supplierStateId" />
+          <ScalarProperty Name="supplierWebpage" ColumnName="supplierWebpage" />
+          <ScalarProperty Name="supplierCity" ColumnName="supplierCity" />
+          <ScalarProperty Name="supplierPhoneNumber" ColumnName="supplierPhoneNumber" />
+          <ScalarProperty Name="supplierAddress" ColumnName="supplierAddress" />
+          <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+          <ScalarProperty Name="supplierNit" ColumnName="supplierNit" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_supplier_delete" FunctionName="MercaFruverSVModel.Store.sp_supplier_delete" />
+    <FunctionImportMapping FunctionImportName="sp_supplier_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_supplier_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_supplier_getById" FunctionName="MercaFruverSVModel.Store.sp_supplier_getById" />
+    <FunctionImportMapping FunctionImportName="sp_supplier_insert" FunctionName="MercaFruverSVModel.Store.sp_supplier_insert" />
+    <FunctionImportMapping FunctionImportName="sp_supplier_update" FunctionName="MercaFruverSVModel.Store.sp_supplier_update" />
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="clientStateId" ColumnName="clientStateId" />
+          <ScalarProperty Name="clientPhoneNumber" ColumnName="clientPhoneNumber" />
+          <ScalarProperty Name="clientEmail" ColumnName="clientEmail" />
+          <ScalarProperty Name="clientAddress" ColumnName="clientAddress" />
+          <ScalarProperty Name="clientName" ColumnName="clientName" />
+          <ScalarProperty Name="clientDocumentNumber" ColumnName="clientDocumentNumber" />
+          <ScalarProperty Name="clientDocumentTypeId" ColumnName="clientDocumentTypeId" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_client_delete" FunctionName="MercaFruverSVModel.Store.sp_client_delete" />
+    <FunctionImportMapping FunctionImportName="sp_client_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_client_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_client_getByDocument" FunctionName="MercaFruverSVModel.Store.sp_client_getByDocument" />
+    <FunctionImportMapping FunctionImportName="sp_client_insert" FunctionName="MercaFruverSVModel.Store.sp_client_insert" />
+    <FunctionImportMapping FunctionImportName="sp_client_update" FunctionName="MercaFruverSVModel.Store.sp_client_update" />
+    <EntitySetMapping Name="Concept_Sale">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Concept_Sale">
+        <MappingFragment StoreEntitySet="Concept_Sale">
+          <ScalarProperty Name="conceptStateId" ColumnName="conceptStateId" />
+          <ScalarProperty Name="conceptUnitPrice" ColumnName="conceptUnitPrice" />
+          <ScalarProperty Name="conceptQuantity" ColumnName="conceptQuantity" />
+          <ScalarProperty Name="conceptSaleId" ColumnName="conceptSaleId" />
+          <ScalarProperty Name="conceptProductId" ColumnName="conceptProductId" />
+          <ScalarProperty Name="conceptId" ColumnName="conceptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_concept_delete" FunctionName="MercaFruverSVModel.Store.sp_concept_delete" />
+    <FunctionImportMapping FunctionImportName="sp_concept_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_concept_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_concept_getById" FunctionName="MercaFruverSVModel.Store.sp_concept_getById" />
+    <FunctionImportMapping FunctionImportName="sp_concept_insert" FunctionName="MercaFruverSVModel.Store.sp_concept_insert" />
+    <FunctionImportMapping FunctionImportName="sp_concept_update" FunctionName="MercaFruverSVModel.Store.sp_concept_update" />
+    <EntitySetMapping Name="Sale">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Sale">
+        <MappingFragment StoreEntitySet="Sale">
+          <ScalarProperty Name="saleStateId" ColumnName="saleStateId" />
+          <ScalarProperty Name="saleTotal" ColumnName="saleTotal" />
+          <ScalarProperty Name="saleDiscount" ColumnName="saleDiscount" />
+          <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+          <ScalarProperty Name="saleVendorId" ColumnName="saleVendorId" />
+          <ScalarProperty Name="saleClientId" ColumnName="saleClientId" />
+          <ScalarProperty Name="saleId" ColumnName="saleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_sale_delete" FunctionName="MercaFruverSVModel.Store.sp_sale_delete" />
+    <FunctionImportMapping FunctionImportName="sp_sale_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_sale_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_sale_getById" FunctionName="MercaFruverSVModel.Store.sp_sale_getById" />
+    <FunctionImportMapping FunctionImportName="sp_sale_insert" FunctionName="MercaFruverSVModel.Store.sp_sale_insert" />
+    <FunctionImportMapping FunctionImportName="sp_sale_update" FunctionName="MercaFruverSVModel.Store.sp_sale_update" />
+    <EntitySetMapping Name="Vendor">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="vendorStateId" ColumnName="vendorStateId" />
+          <ScalarProperty Name="vendorPhoneNumber" ColumnName="vendorPhoneNumber" />
+          <ScalarProperty Name="vendorEmail" ColumnName="vendorEmail" />
+          <ScalarProperty Name="vendorAddress" ColumnName="vendorAddress" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+          <ScalarProperty Name="vendorDocumentTypeNumber" ColumnName="vendorDocumentTypeNumber" />
+          <ScalarProperty Name="vendorDocumentTypeId" ColumnName="vendorDocumentTypeId" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_vendor_delete" FunctionName="MercaFruverSVModel.Store.sp_vendor_delete" />
+    <FunctionImportMapping FunctionImportName="sp_vendor_deleteSoft" FunctionName="MercaFruverSVModel.Store.sp_vendor_deleteSoft" />
+    <FunctionImportMapping FunctionImportName="sp_vendor_getById" FunctionName="MercaFruverSVModel.Store.sp_vendor_getById" />
+    <FunctionImportMapping FunctionImportName="sp_vendor_insert" FunctionName="MercaFruverSVModel.Store.sp_vendor_insert" />
+    <FunctionImportMapping FunctionImportName="sp_vendor_update" FunctionName="MercaFruverSVModel.Store.sp_vendor_update" />
+    <EntitySetMapping Name="cstate">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.cstate">
+        <MappingFragment StoreEntitySet="cstate">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Document_Type">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.Document_Type">
+        <MappingFragment StoreEntitySet="Document_Type">
+          <ScalarProperty Name="documentTypeName" ColumnName="documentTypeName" />
+          <ScalarProperty Name="documentTypeId" ColumnName="documentTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_supplier_list" FunctionName="MercaFruverSVModel.Store.sp_supplier_list" />
+    <FunctionImportMapping FunctionImportName="sp_purchase_list" FunctionName="MercaFruverSVModel.Store.sp_purchase_list" />
+    <EntitySetMapping Name="vw_Product">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Product">
+        <MappingFragment StoreEntitySet="vw_Product">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Purchase">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Purchase">
+        <MappingFragment StoreEntitySet="vw_Purchase">
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="purchaseId" ColumnName="purchaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Supplier">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Supplier">
+        <MappingFragment StoreEntitySet="vw_Supplier">
+          <ScalarProperty Name="Webpage" ColumnName="Webpage" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="supplierId" ColumnName="supplierId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Sale">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Sale">
+        <MappingFragment StoreEntitySet="vw_Sale">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
+          <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="saleId" ColumnName="saleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_sale_list" FunctionName="MercaFruverSVModel.Store.sp_sale_list" />
+    <EntitySetMapping Name="vw_Concept">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Concept">
+        <MappingFragment StoreEntitySet="vw_Concept">
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Sale" ColumnName="Sale" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="conceptId" ColumnName="conceptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_concept_list" FunctionName="MercaFruverSVModel.Store.sp_concept_list" />
+    <EntitySetMapping Name="vw_Client">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Client">
+        <MappingFragment StoreEntitySet="vw_Client">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Vendor">
+      <EntityTypeMapping TypeName="MercaFruverSVModel.vw_Vendor">
+        <MappingFragment StoreEntitySet="vw_Vendor">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_client_list" FunctionName="MercaFruverSVModel.Store.sp_client_list" />
+    <FunctionImportMapping FunctionImportName="sp_vendor_list" FunctionName="MercaFruverSVModel.Store.sp_vendor_list" />
+    <FunctionImportMapping FunctionImportName="sp_sale_getlast" FunctionName="MercaFruverSVModel.Store.sp_sale_getlast" />
+    <FunctionImportMapping FunctionImportName="sp_product_getById" FunctionName="MercaFruverSVModel.Store.sp_product_getById" />
+  </EntityContainerMapping>
+</Mapping>
